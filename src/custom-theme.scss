@@ -1,0 +1,92 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use 'variables' as *;  // This will make all the variables available
+
+// Include common styles for Angular Material. Ensure this mixin is included only once.
+@include mat.core();
+
+// Create the theme object
+$erp-web-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app
+@include mat.all-component-themes($erp-web-theme);
+
+// Global styles
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: $default-font-family;
+}
+
+// Buttons styles
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  border-radius: $default-border-radius-size;
+  font-weight: 500;
+  min-width: 120px;
+  min-height: 48px;
+  font-size: 16px;
+  margin: 0;
+
+  &:not(:disabled) {
+    border-color: $primary-color;
+  }
+
+  &.btn {
+    &.btn-confirm {
+      background-color: $primary-color;
+      color: $light-text-color;
+    }
+    &.btn-danger {
+      background-color: $danger-color;
+      border-color: $danger-color;
+      color: $light-text-color;
+    }
+    &.btn-info {
+      background-color: $warning-color;
+      border-color: $warning-color;
+      color: $light-text-color;
+    }
+    &.btn-accent {
+      background-color: $light-text-color;
+      border-color: $primary-color;
+    }
+  }
+
+  &.mat-mdc-unelevated-button {
+    color: $light-text-color;
+  }
+
+  &[disabled] {
+    border-color: #ccc;
+  }
+}
+
+// Snackbar styles
+.mat-mdc-snack-bar-container {
+  &.error .mdc-snackbar__surface {
+    background-color: $danger-color;
+  }
+
+  &.success .mdc-snackbar__surface {
+    background-color: $success-color;
+  }
+
+  &.info .mdc-snackbar__surface {
+    background-color: $warning-color;
+    color: $dark-text-color;
+  }
+}
+
+.mdc-notched-outline .mdc-floating-label {
+  min-width: 3.5rem;
+}

@@ -1,0 +1,10 @@
+<div style="position: relative;">
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                    (closed)="events.push('close!')">
+          Sidenav content
+        </mat-sidenav>
+      </mat-sidenav-container>
+    
+      <button class="toggle-btn" mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>    
+</div>

@@ -1,0 +1,32 @@
+@use "./../../variables" as vars
+nav 
+    background-color: #0d1117
+    border-bottom: 1.5px solid vars.$primary-color
+    height: 100px
+
+    .navbar-nav
+        align-items: flex-end !important
+
+        .nav-item
+            &:hover
+                cursor: pointer
+            .nav-link 
+                img 
+                    width: 60px
+                    padding: 5px
+                    border: 2px solid vars.$primary-color
+                    border-radius: 50%
+                    transition: all 0.3s ease
+
+                    &:hover 
+                        border-color: vars.$primary-color
+                        border-width: 4px
+
+            .logout-button 
+                text-decoration-color: transparent
+                transition: text-decoration-color, font-size 0.3s ease
+
+                &:hover 
+                    text-decoration: underline
+                    text-decoration-color: vars.$primary-color
+                    font-size: 18px

@@ -1,1 +1,210 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'variables' as vars
+
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+html
+  font-size: 100% // 16px (1rem = 16px)
+
+body
+  background-color: vars.$background-color
+  color: vars.$dark-text-color
+  margin: 0
+  padding: 0
+  min-height: 100vh
+  font-family: vars.$default-font-family
+  font-size: 1rem  // Base font size, 1rem = 16px (you can adjust this if needed)
+
+.page-content
+  display: flex
+  height: calc(100vh  - 100px ) //100px the header height
+  margin-top: 100px
+
+.main-content
+    width: 100%
+    padding: 34px 40px
+    height: 100%
+    overflow: auto
+
+a
+  color: vars.$primary-color
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+// Flexbox Utilities
+.flex
+  display: flex
+
+.flex-center
+  @extend .flex
+  justify-content: center
+  align-items: center
+
+.flex-column
+  @extend .flex
+  flex-direction: column
+
+.flex-space-between
+  @extend .flex
+  justify-content: space-between
+
+// Margin Utilities
+.m-0
+  margin: 0
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd
+  margin: 0
+  padding: 0
+  font-family: 'Inter', sans-serif
+
+input, button, textarea, select
+  font: inherit
+
+.m-0
+  margin: 0 !important
+
+.p-0
+  padding: 0 !important
+
+.ps-5px
+  padding-inline-start: 0.3125rem // 5px
+
+.text-center
+  text-align: center !important
+
+.text-right
+  text-align: right !important
+
+.text-left
+  text-align: left !important
+
+.full-width
+  width: 100%
+
+.clickable
+  cursor: pointer
+
+.content-center
+  display: flex
+  justify-content: center
+
+.item-end
+  display: flex
+  justify-content: flex-end
+
+.items-center
+  display: flex
+  align-items: center
+
+.items-start
+  display: flex
+  align-items: flex-start
+
+.space-between
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.gap-0
+  gap: 0
+
+.gap-5px
+  gap: 0.3125rem // 5px
+
+.gap-10px
+  gap: 0.625rem // 10px
+
+.gap-15px
+  gap: 0.9375rem // 15px
+
+.gap-20px
+  gap: 1.25rem // 20px
+
+.gap-25px
+  gap: 1.5625rem // 25px
+
+.gap-30px
+  gap: 1.875rem // 30px
+
+.flex
+  display: flex
+
+.flex-row
+  display: flex
+  gap: 0.625rem // 10px
+  width: 100%
+
+.flex-column
+  display: flex
+  gap: 0.625rem // 10px
+  flex-direction: column
+
+.justify-between
+  justify-content: space-between
+
+.margin-x-10
+  margin-inline: 0.625rem // 10px
+
+.margin-y-10
+  margin-block: 0.625rem // 10px
+
+.margin-y-20
+  margin-block: 1.25rem // 20px
+
+.margin-y-30
+  margin-block: 1.875rem // 30px
+
+.margin-bottom-10
+  margin-bottom: 0.625rem // 10px
+
+.margin-bottom-20
+  margin-bottom: 1.25rem // 20px
+
+.margin-bottom-30
+  margin-bottom: 1.875rem // 30px
+
+.margin-top-10
+  margin-top: 0.625rem // 10px
+
+.margin-top-20
+  margin-top: 1.25rem // 20px
+
+.margin-top-30
+  margin-top: 1.875rem // 30px
+
+.d-none
+  display: none !important
+
+input:focus, input:focus-visible
+  border: 1px solid vars.$primary-color
+
+input[type=checkbox]
+  width: 1rem // 16px
+  height: 1.125rem // 18px
+  border-radius: 0.25rem // 4px
+  border: 1px solid vars.$primary-color
+  background-color: #FDFBFB
+  margin: 0
+  accent-color: vars.$primary-color
+  cursor: pointer
+
+input[type=radio]
+  accent-color: vars.$primary-color
+  width: 1rem // 16px
+  height: 1.125rem // 18px
+  margin: 0
+  cursor: pointer
+
+.color-primary
+  color: vars.$primary-color
+
+[routerLink], [href]
+  cursor: pointer
+
+.rtl
+  direction: rtl
