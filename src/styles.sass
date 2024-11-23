@@ -6,6 +6,8 @@
   box-sizing: border-box
   margin: 0
   padding: 0
+  transition: width 0.3s ease
+
 
 html
   font-size: 100% // 16px (1rem = 16px)
@@ -16,19 +18,24 @@ body
   margin: 0
   padding: 0
   min-height: 100vh
-  font-family: vars.$default-font-family
+  // font-family: vars.$default-font-family
   font-size: 1rem  // Base font size, 1rem = 16px (you can adjust this if needed)
 
 .page-content
   display: flex
   height: calc(100vh  - 100px ) //100px the header height
   margin-top: 100px
+  position: relative
 
 .main-content
     width: 100%
     padding: 34px 40px
     height: 100%
     overflow: auto
+    margin-left: 70px // sidebar width
+    &:dir(rtl)
+      margin-right: 70px
+      margin-left: 0
 
 a
   color: vars.$primary-color
@@ -60,7 +67,7 @@ a
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd
   margin: 0
   padding: 0
-  font-family: 'Inter', sans-serif
+  font-family: vars.$default-font-family
 
 input, button, textarea, select
   font: inherit
@@ -181,20 +188,20 @@ input, button, textarea, select
   display: none !important
 
 input:focus, input:focus-visible
-  border: 1px solid vars.$primary-color
+  border: 1px solid vars.$accent-color
 
 input[type=checkbox]
   width: 1rem // 16px
   height: 1.125rem // 18px
   border-radius: 0.25rem // 4px
-  border: 1px solid vars.$primary-color
+  border: 1px solid vars.$accent-color
   background-color: #FDFBFB
   margin: 0
-  accent-color: vars.$primary-color
+  accent-color: vars.$accent-color
   cursor: pointer
 
 input[type=radio]
-  accent-color: vars.$primary-color
+  accent-color: vars.$accent-color
   width: 1rem // 16px
   height: 1.125rem // 18px
   margin: 0

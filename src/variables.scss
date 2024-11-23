@@ -7,11 +7,10 @@ $background-color: #FFF;
 $primary-palette: mat.define-palette(mat.$indigo-palette);
 $accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $warn-palette: mat.define-palette(mat.$red-palette);
-$secondary-palette: mat.define-palette(mat.$blue-palette); // Adding secondary color palette
 
 // Custom Colors
-$primary-color: mat.get-color-from-palette($primary-palette, 500);
-$secondary-color: mat.get-color-from-palette($secondary-palette, 500); // Defining secondary color
+$primary-color: #235233;
+$accent-color: #EEE; // Defining secondary color
 $danger-color: mat.get-color-from-palette($warn-palette, 500);
 $success-color: mat.get-color-from-palette($accent-palette, 200);
 $warning-color: mat.get-color-from-palette($accent-palette, 400);
@@ -19,8 +18,7 @@ $light-text-color: #ffffff;
 $dark-text-color: #141414;
 
 // Font Variables
-$default-font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
-
+$default-font-family: "Cairo", sans-serif, "Helvetica Neue", sans-serif;
 // Spacing Variables
 $default-padding-size: 16px;
 $default-margin-size: 8px;

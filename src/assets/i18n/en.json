@@ -1,0 +1,26 @@
+{
+  "shared": {
+    "ar": "عربي",
+    "en": "English",
+    "yes": "Yes",
+    "no": "No",
+    "for": "For",
+    "comma": ",",
+    "min": "Minimum",
+    "max": "Maximum",
+    "profile": "Profile",
+    "personalInfo": "Personal Information",
+    "allRightsReserved": "All rights reserved",
+    "privacyPolicy": "Privacy Policy",
+    "termsCondition": "Terms & Condition",
+    "logout": "Logout"
+  },
+  "sidebar": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "roles": "Roles",
+    "permissions": "Permissions",
+    "logs": "Logs"
+  }
+}

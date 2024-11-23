@@ -1,26 +1,54 @@
-import { Component, Input } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+
+interface MenuItem {
+  name: string;
+  icon: string;
+}
 
 @Component({
-  selector: 'app-side-bar',
   standalone: true,
-  imports: [MatSidenavModule, MatCheckboxModule, FormsModule, MatButtonModule],
+  selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrl: './side-bar.component.sass'
+  styleUrls: ['./side-bar.component.sass'],
+  host: {
+    '[class.mobile]': 'isMobile'
+  },
+  imports: [
+    CommonModule,
+    MatIcon,
+    TranslateModule
+  ]
 })
 export class SideBarComponent {
   @Input() isMobile: boolean = false;
 
   events: string[] = [];
-  opened: boolean = true;
+  opened: boolean = false;
+  items: MenuItem[] = [
+    { name: 'home', icon: 'home' },
+    { name: 'dashboard', icon: 'dashboard' },
+    { name: 'users', icon: 'people' },
+    { name: 'products', icon: 'shopping_cart' },
+    { name: 'settings', icon: 'settings' },
+    { name: 'logout', icon: 'exit_to_app' }
+  ];
 
-  ngOnInit() {
-    if (this.isMobile) {
-      this.opened = false;
-    }
+  @ViewChild('sidebar', { static: true }) sidebarRef!: ElementRef;
+  width: number = 70;
+  expandedWidth: number = 260;
+
+  // Expand the sidebar to full width on hover
+  expandSidebar(): void {
+    this.width = this.expandedWidth;
+    this.opened = true;
   }
 
+  // Collapse the sidebar to its default width when hover ends
+  collapseSidebar(): void {
+    this.width = 70;
+    this.opened = false;
+  }
 }

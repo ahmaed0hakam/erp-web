@@ -1,0 +1,26 @@
+{
+    "shared": {
+        "ar": "عربي",
+        "en": "English",
+        "yes": "نعم",
+        "no": "لا",
+        "for": "لـ",
+        "comma": "،",
+        "min": "القيمة الصُغرى",
+        "max": "القيمة العُظمى",
+        "profile": "الملف الشخصي",
+        "personalInfo": "المعلومات الشخصية",
+        "allRightsReserved": "جميع الحقوق محفوطة",
+        "privacyPolicy": "سياسة الخصوصية",
+        "termsCondition": "الشروط والأحكام",
+        "logout": "تسجيل الخروج"
+    },
+    "sidebar": {
+        "home": "الصفحة الرئيسية",
+        "dashboard": "لوحة التحكم",
+        "users": "المستخدمون",
+        "roles": "الوثائق",
+        "permissions": "الصلاحيات",
+        "logs": "التسجيلات"
+    }
+}
