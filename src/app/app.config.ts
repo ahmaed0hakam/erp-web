@@ -3,10 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ApiInterceptor } from './shared/services/interceptor/interceptor.service';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader{
   return new TranslateHttpLoader(http, './assets/i18n/', ".json");
@@ -33,6 +34,11 @@ export const appConfig: ApplicationConfig = {
       HttpClientModule, 
       TranslateModule.forRoot(provideTranslation())
     ]),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true  // This ensures that multiple interceptors can be used
+    }
   ]
 };
 
