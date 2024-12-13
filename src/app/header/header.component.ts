@@ -9,9 +9,10 @@ import { Languages } from '../shared/interfaces/direction';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIconButton } from '@angular/material/button';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { SharedService } from '../shared/services/shared/shared.service';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-header',
   standalone: true,
   imports: [
     MatToolbar,
@@ -19,18 +20,20 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
     TranslateModule,
     MatTooltip,
     MatIconButton,
-    MatMenuModule
+    MatMenuModule,
   ],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.sass'
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.sass'
 })
-export class NavbarComponent {
+export class HeaderComponent {
 
-  @Input() isMobile: boolean = false;
+  isMobile: boolean = false;
+  isLoggedIn: boolean = false;
 
   private _translate = inject(TranslateService);
   private _config = inject(ConfigService);
   private _router = inject(Router);
+  private _sharedService = new SharedService
   secLang = this._config.getSecLang();
 
 
@@ -46,7 +49,11 @@ export class NavbarComponent {
     this._router.navigate(['/' + path]);
   }
 
-  constructor() { }
+  constructor() {
+    this._sharedService.isLoggedIn.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    })
+  }
 
   switchLang() {
     const secLang = this._config.getSecLang();
@@ -56,5 +63,8 @@ export class NavbarComponent {
   }
 
   ngOnInit() {
+    this._sharedService.isMobile.subscribe(isMobile => {
+      this.isMobile = isMobile;
+    });
   }
 }

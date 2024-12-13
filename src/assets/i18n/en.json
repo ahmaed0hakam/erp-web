@@ -22,5 +22,10 @@
     "roles": "Roles",
     "permissions": "Permissions",
     "logs": "Logs"
+  },
+  "landing": {
+    "getStarted": "Get Started!",
+    "ourServices": "Our Services",
+    "registerNow": "Register Now!"
   }
 }

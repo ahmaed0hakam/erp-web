@@ -1,13 +1,17 @@
 <!-- Navbar Component -->
-<app-navbar [isMobile]="isMobile"></app-navbar>
+<app-header></app-header>
 
 <!-- Main Content where the routed components will appear -->
-<div class="page-content">
-  <app-side-bar [isMobile]="isMobile"></app-side-bar>
+<div class="page-content" [class.logged-in]="isLoggedIn">
 
-  <main class="main-content"> <!-- Add margin for navbar -->
+  @if (isLoggedIn) {
+    <app-side-bar></app-side-bar>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  } @else {
     <router-outlet></router-outlet>
-  </main>
+  }
 </div>
 
 

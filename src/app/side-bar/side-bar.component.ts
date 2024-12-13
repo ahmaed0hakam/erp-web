@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, Input, ViewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { SharedService } from '../shared/services/shared/shared.service';
 
 interface MenuItem {
   name: string;
@@ -23,7 +24,8 @@ interface MenuItem {
   ]
 })
 export class SideBarComponent {
-  @Input() isMobile: boolean = false;
+  private _sharedService = inject(SharedService);
+  isMobile: boolean = false;
 
   events: string[] = [];
   opened: boolean = false;
@@ -39,6 +41,12 @@ export class SideBarComponent {
   @ViewChild('sidebar', { static: true }) sidebarRef!: ElementRef;
   width: number = 70;
   expandedWidth: number = 260;
+
+  ngOnInit(): void {
+    this._sharedService.isMobile.subscribe(isMobile => {
+      this.isMobile = isMobile;
+    });
+  }
 
   // Expand the sidebar to full width on hover
   expandSidebar(): void {

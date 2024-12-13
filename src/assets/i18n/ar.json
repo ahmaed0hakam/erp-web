@@ -22,5 +22,10 @@
         "roles": "الوثائق",
         "permissions": "الصلاحيات",
         "logs": "التسجيلات"
+    },
+    "landing": {
+        "getStarted": "ابدأ الآن!",
+        "ourServices": "خدماتنا",
+        "registerNow": "سجّل الآن!"
     }
 }

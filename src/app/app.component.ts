@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { Language, TranslateService, TranslateStore } from '@ngx-translate/core'; // Import TranslateService
 import { ConfigService } from './shared/services/config/config.service';
@@ -9,13 +9,14 @@ import { config } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Languages } from './shared/interfaces/direction';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { SharedService } from './shared/services/shared/shared.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    NavbarComponent,
+    HeaderComponent,
     FooterComponent,
     SideBarComponent
   ],
@@ -25,13 +26,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class AppComponent implements OnInit {
   title = 'erp-web';
-  isMobile: any;
+  isLoggedIn: boolean = false;
   isLoading!: boolean;
 
   private _config = inject(ConfigService) ;
   private _translate = inject(TranslateService);
   private _router = inject(Router); 
   private _breakpointObserver = inject(BreakpointObserver);
+  private _sharedService = inject(SharedService);
 
 
   constructor(
@@ -48,7 +50,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Use BreakpointObserver to check if it's mobile
     this._breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
-      this.isMobile = result.matches;
+      this._sharedService.setIsMobile(result.matches);
+    });
+
+    this._sharedService.isLoggedIn.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
     });
 
     // Router events for loading states

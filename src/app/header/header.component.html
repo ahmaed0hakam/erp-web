@@ -18,9 +18,11 @@
       </mat-icon>
     </button>
 
-    <button mat-icon-button [matTooltip]="'shared.profile' | translate" [matMenuTriggerFor]="profileMenu">
-      <mat-icon>person</mat-icon>
-    </button>
+    @if (isLoggedIn) {
+      <button mat-icon-button [matTooltip]="'shared.profile' | translate" [matMenuTriggerFor]="profileMenu">
+        <mat-icon>person</mat-icon>
+      </button>
+    }
     <mat-menu #profileMenu="matMenu">
       <button mat-menu-item>{{'shared.personalInfo' | translate}}</button>
       <button mat-menu-item>{{'shared.logout' | translate}}</button>

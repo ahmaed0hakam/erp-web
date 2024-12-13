@@ -1,0 +1,43 @@
+<section class="intro" [style]="{'background-image': 'url(' + (tenantInfo.banner) + ')'}">
+    <div class="intro-details">
+        <h1 class="intro-title">
+            {{ tenantInfo.name}}
+        </h1>
+        <p class="intro-desc">
+            {{ tenantInfo.description}}
+        </p>
+            <button class="primary-button" (click)="scrollToSection('info')">
+                {{ 'landing.getStarted' | translate }}
+            </button>
+
+    </div>
+</section>
+<section class="info" id="info">
+    <h1>
+        {{ 'landing.ourServices' | translate}}
+    </h1>
+    <div class="info-details">
+        <div class="upper-part">
+            <div class="left-side">
+                <p class="info-desc">
+                    {{ tenantInfo.description}}
+                </p>
+                <button class="primary-button">
+                    {{ 'landing.registerNow' | translate }}
+                </button>
+            </div>
+            <div class="right-side">
+                <img [src]="(tenantInfo.infoImage)" alt="">
+            </div>
+        </div>
+        <div class="lower-part">
+            @for (box of (tenantInfo.infoBoxes); track $index) {
+                <div class="box">
+                    <h3>{{box.title}}</h3>
+                    <p>{{box.description}}</p>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
